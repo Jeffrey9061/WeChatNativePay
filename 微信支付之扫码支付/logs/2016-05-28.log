@@ -1,0 +1,8 @@
+2016-05-28 11:36:42.695 INFO WxPayAPI.ResultNotify: Receive data from WeChat : 
+2016-05-28 11:36:42.696 ERROR WxPayAPI.WxPayData: 将空的xml串转换为WxPayData不合法!
+2016-05-28 11:36:42.698 ERROR WxPayAPI.ResultNotify: Sign check error : <xml><return_code><![CDATA[FAIL]]></return_code><return_msg><![CDATA[将空的xml串转换为WxPayData不合法!]]></return_msg></xml>
+2016-05-28 14:20:44.263 ERROR WxPayAPI.WxPayData: 将空的xml串转换为WxPayData不合法!
+2016-05-28 14:22:32.736 ERROR WxPayAPI.WxPayData: 将空的xml串转换为WxPayData不合法!
+2016-05-28 14:22:40.639 ERROR WxPayAPI.WxPayData: 将空的xml串转换为WxPayData不合法!
+2016-05-28 14:22:54.839 ERROR WxPayAPI.WxPayData: 将空的xml串转换为WxPayData不合法!
+2016-05-28 14:22:57.915 ERROR WxPayAPI.WxPayData: 将空的xml串转换为WxPayData不合法!

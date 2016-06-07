@@ -1,0 +1,102 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>首页</title>
+    <link href="~/Scripts/jquery-easyui-1.4.5/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/Scripts/jquery-easyui-1.4.5/themes/mobile.css" rel="stylesheet" />
+    <link href="~/Scripts/jquery-easyui-1.4.5/themes/icon.css" rel="stylesheet" />
+</head>
+<body>
+    <p>
+        模式一：生成扫描支付模式
+        <br />
+        <div id="QRCode1">
+
+        </div>
+    </p>
+    <p>
+        模式二：生成直接支付url，支付url有效期为2小时
+        <br />
+        <div id="QRCode2">
+
+        </div>
+    </p>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-easyui-1.4.5/jquery.easyui.min.js"></script>
+    <script src="~/Scripts/jquery-easyui-1.4.5/jquery.easyui.mobile.js"></script>
+    <script src="~/Scripts/jquery-easyui-1.4.5/easyloader.js"></script>
+    <script src="~/Scripts/jquery.qrcode.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            fGetQRCode1();
+        })
+
+
+        function fGetQRCode1() {
+            $.messager.progress({
+                title: "",
+                msg: "正在生成二维码:模式一,请稍后..."
+            });
+            $.ajax({
+                type: "post",
+                url: "/Home/GetQRCode1",
+                data: {
+                    time: new Date(),
+                    productId:7788
+                },
+                success: function (json) {
+                    $.messager.progress('close');//记得关闭
+                    if (json.result) {
+                        $('#QRCode1').qrcode(json.str); //生成二维码
+                    }
+                    else {
+                        $('#QRCode1').html("二维码生成失败");
+                    }
+                    fGetQRCode2();
+                },
+                error: function (json) {
+                    $('#QRCode1').html("二维码生成失败");
+                    fGetQRCode2();
+                }
+
+            })
+        }
+
+
+        function fGetQRCode2() {
+            $.messager.progress({
+                title: "",
+                msg: "正在生成二维码:模式二,请稍后..."
+            });
+            $.ajax({
+                type: "post",
+                url: "/Home/GetQRCode2",
+                data: {
+                    time: new Date(),
+                    productId: 7788
+                },
+                success: function (json) {
+                    $.messager.progress('close');//记得关闭
+                    if (json.result) {
+                        $('#QRCode2').qrcode(json.str); //生成二维码
+                    }
+                    else {
+                        $('#QRCode2').html("二维码生成失败");
+                    }
+                },
+                error: function (json) {
+                    $('#QRCode2').html("二维码生成失败");
+                }
+            })
+        }
+
+    </script>
+</body>
+</html>
